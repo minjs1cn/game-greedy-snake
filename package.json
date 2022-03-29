@@ -4,6 +4,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/greedy-snake.umd.js",
   "module": "./dist/greedy-snake.es.js",
   "exports": {
@@ -22,7 +25,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build && tsc",
     "test": "jest",
     "preview": "vite preview"
   },
