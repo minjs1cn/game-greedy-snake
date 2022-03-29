@@ -12,6 +12,7 @@
     "type": "git",
     "url": "https://github.com/minjs1cn/game-greedy-snake"
   },
+  "homepage": "https://minjs1cn.github.io/game-greedy-snake/",
   "main": "./dist/greedy-snake.umd.js",
   "module": "./dist/greedy-snake.es.js",
   "exports": {
@@ -30,9 +31,9 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build && tsc",
+    "build": "vue-tsc --noEmit && node scripts/build && tsc",
     "test": "jest",
-    "preview": "vite preview"
+    "preview": "node scripts/preview"
   },
   "dependencies": {
     "hotkeys-js": "^3.8.7",
