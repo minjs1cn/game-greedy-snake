@@ -30,7 +30,7 @@
     "webgl"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/dev",
     "build": "vue-tsc --noEmit && node scripts/build && tsc",
     "test": "jest",
     "preview": "node scripts/preview"
