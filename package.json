@@ -1,6 +1,6 @@
 {
   "name": "game-greedy-snake",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "dist"
   ],
@@ -21,6 +21,8 @@
       "require": "./dist/greedy-snake.umd.js"
     }
   },
+  "types": "dist/es/index.d.ts",
+  "typings": "dist/es/index.d.ts",
   "license": "MIT",
   "keywords": [
     "game",
