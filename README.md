@@ -15,7 +15,7 @@ import {
   Obstacle,
   GameObstacle,
   GameSnakeNode,
-} from "@byte1024/greedy-snake";
+} from "@game/greedy-snake";
 const game = new Game({
   map: {
     width: 30,
