@@ -2,11 +2,18 @@
 import { onMounted, reactive } from "vue";
 import hotkeys from "hotkeys-js";
 
-import { Game, Direction, Obstacle, GameObstacle, GameSnakeNode } from "../src";
+import {
+  Game,
+  Direction,
+  Food,
+  Obstacle,
+  GameObstacle,
+  GameSnakeNode,
+} from "../src";
 const game = new Game({
   map: {
-    width: 30,
-    height: 25,
+    width: 20,
+    height: 20,
   },
   snake: {
     bodyLength: 3,
@@ -25,15 +32,19 @@ class Bomb extends Obstacle {
   }
 
   public consume() {
-    // 炸弹爆炸，蛇身长度减1
-    this.game.snake.reduce();
-    // 计数减1
-    this.game.count--;
+    // 初始长度为3
+    if (this.game.count > 3) {
+      // 炸弹爆炸，蛇身长度减1
+      this.game.snake.reduce();
+      // 计数减1
+      this.game.count--;
+    }
     return true;
   }
 }
 
-// game.addObstacle(new Bomb(game));
+game.addObstacle(new Food(game));
+game.addObstacle(new Bomb(game));
 game.init();
 
 (window as any).game = game;
@@ -59,6 +70,22 @@ const onStart = () => {
 
 console.log(game);
 
+const onUp = function () {
+  game.setDirection(Direction.UP);
+};
+
+const onLeft = function () {
+  game.setDirection(Direction.LEFT);
+};
+
+const onDown = function () {
+  game.setDirection(Direction.DOWN);
+};
+
+const onRight = function () {
+  game.setDirection(Direction.RIGHT);
+};
+
 onMounted(() => {
   setInterval(() => {
     if (!started) {
@@ -71,27 +98,18 @@ onMounted(() => {
 
     g.body = game.body;
     g.obstacles = game.obstacles;
-  }, 300);
+  }, 200);
 
-  hotkeys("w", function () {
-    game.setDirection(Direction.UP);
-  });
-  hotkeys("s", function () {
-    game.setDirection(Direction.DOWN);
-  });
-  hotkeys("a", function () {
-    game.setDirection(Direction.LEFT);
-  });
-  hotkeys("d", function () {
-    game.setDirection(Direction.RIGHT);
-  });
+  hotkeys("w", onUp);
+  hotkeys("a", onLeft);
+  hotkeys("s", onDown);
+  hotkeys("d", onRight);
 });
 </script>
 
 <template>
-  <div>
-    <h1>{{ game.count }}</h1>
-    <button @click="onStart">start</button>
+  <div style="text-align: center">
+    <h1>得分：{{ game.count }}</h1>
     <div
       :style="{
         position: 'relative',
@@ -99,6 +117,7 @@ onMounted(() => {
         flexWrap: 'wrap',
         width: `${width * 20}px`,
         height: `${height * 20}px`,
+        margin: '0 auto',
       }"
     >
       <div
@@ -131,6 +150,18 @@ onMounted(() => {
         }"
       ></div>
     </div>
+    <button style="margin-top: 16px" class="btn" @click="onUp">w</button>
+    <div>
+      <button class="btn" @click="onLeft">a</button>
+      <button class="btn" @click="onDown">s</button>
+      <button class="btn" @click="onRight">d</button>
+    </div>
+    <button class="btn" @click="onStart">restart</button>
+    <section>
+      <p>键盘 w a s d 控制移动</p>
+      <p>蛇头黑色，蛇身蓝色</p>
+      <p>绿色是食物，黄色为炸弹</p>
+    </section>
   </div>
 </template>
 
@@ -140,5 +171,14 @@ onMounted(() => {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+.btn {
+  background-color: #3498db;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
 }
 </style>
