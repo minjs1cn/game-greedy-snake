@@ -22,12 +22,6 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - name: Deploy preview
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: preview
       - name: Read version
         id: version
         uses: ashley-taylor/read-json-property-action@v1.0
