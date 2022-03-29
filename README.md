@@ -9,7 +9,13 @@
 import { onMounted, reactive } from "vue";
 import hotkeys from "hotkeys-js";
 
-import { Game, Direction, Obstacle, GameObstacle, GameSnakeNode } from "../src";
+import {
+  Game,
+  Direction,
+  Obstacle,
+  GameObstacle,
+  GameSnakeNode,
+} from "@byte1024/greedy-snake";
 const game = new Game({
   map: {
     width: 30,

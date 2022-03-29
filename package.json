@@ -1,5 +1,5 @@
 {
-  "name": "@game/greedy-snake",
+  "name": "@byte1024/greedy-snake",
   "version": "0.0.1",
   "files": [
     "dist"
