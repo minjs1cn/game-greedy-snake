@@ -1,0 +1,57 @@
+{
+  "name": "game-greedy-snake",
+  "private": true,
+  "version": "0.0.2",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "preview": "vite build --config vite.preview.config.ts",
+    "lint": "eslint src/"
+  },
+  "files": [
+    "lib"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/next-dev-template/game-greedy-snake"
+  },
+  "homepage": "https://minjs1cn.github.io/game-greedy-snake/",
+  "main": "./lib/greedy-snake.umd.js",
+  "module": "./lib/greedy-snake.es.js",
+  "exports": {
+    ".": {
+      "import": "./lib/greedy-snake.es.js",
+      "require": "./lib/greedy-snake.umd.js"
+    }
+  },
+  "types": "lib/es/index.d.ts",
+  "typings": "lib/es/index.d.ts",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "@vitejs/plugin-vue": "^2.3.0",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.1",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.5.4",
+    "vite": "^2.8.0"
+  },
+  "dependencies": {
+    "hotkeys-js": "^3.8.7",
+    "vue": "^3.2.31"
+  }
+}
