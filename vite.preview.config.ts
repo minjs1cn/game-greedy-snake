@@ -3,5 +3,7 @@ import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  base: `/${require('./package.json').name}`,
   plugins: [vue()],
 });
